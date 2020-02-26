@@ -16,8 +16,6 @@ protocol AuthServiceDelegate: class {
 
 class AuthService: NSObject, VKSdkDelegate, VKSdkUIDelegate {
     
-    static let shared = AuthService()
-    
     private let appId = "7334955"
     private let vkSdk: VKSdk
     
@@ -32,7 +30,7 @@ class AuthService: NSObject, VKSdkDelegate, VKSdkUIDelegate {
     }
     
     func wakeUpSession() {
-        let scope = ["friends"]
+        let scope = ["offline"]
         VKSdk.wakeUpSession(scope) { [delegate] (state, error) in
             switch state {
             case .authorized:

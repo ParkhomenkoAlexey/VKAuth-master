@@ -25,10 +25,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, AuthServiceDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-//        self.authService = AuthService()
-//        authService.delegate = self
-        AuthService.shared.delegate = self
-        let authVC = UIStoryboard(name: "AuthViewController", bundle: nil).instantiateInitialViewController() as? AuthViewController
+        self.authService = AuthService()
+        authService.delegate = self
+//        let authVC = UIStoryboard(name: "AuthViewController", bundle: nil).instantiateInitialViewController() as? AuthViewController
+        let authVC: AuthViewController = AuthViewController.loadFromStoryboard()
         window?.rootViewController = authVC
         window?.makeKeyAndVisible()
     }
@@ -77,10 +77,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, AuthServiceDelegate {
          
          func authServiceSignIn() {
              print(#function)
-            print("успешно!")
 //           let feedVC = UIStoryboard(name: "FeedViewController", bundle: nil).instantiateInitialViewController() as! FeedViewController
-//           let navVC = UINavigationController(rootViewController: feedVC)
-//           window?.rootViewController = navVC
+            let feedVC: FeedViewController = FeedViewController.loadFromStoryboard()
+            let navVC = UINavigationController(rootViewController: feedVC)
+            window?.rootViewController = navVC
          }
          
          func authServiceDidSignInFail() {

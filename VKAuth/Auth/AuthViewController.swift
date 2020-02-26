@@ -16,13 +16,11 @@ class AuthViewController: UIViewController {
         super.viewDidLoad()
         
         
-//        authService = SceneDelegate.shared().authService
+        authService = SceneDelegate.shared().authService
     }
 
     @IBAction func signInTouch(_ sender: UIButton) {
-//        authService.wakeUpSession()
-        AuthService.shared.wakeUpSession()
+        authService.wakeUpSession()
     }
-    
 }
 
